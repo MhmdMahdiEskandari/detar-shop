@@ -19,6 +19,29 @@
 
     <style>
         /* page-specific additions, same pattern as the menu pages */
+        @font-face {
+            font-family: 'IranNastaliq';
+            src: url('IranNastaliq.ttf') format('truetype');
+            font-display: block;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IranNastaliq', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            background: #f6ebc2;
+            min-height: 100vh;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .page-navigation {
             display: flex;
             justify-content: center;
@@ -213,25 +236,25 @@
                             <div class="product-image-wrap" onclick="openImage('images/products/torshi-albalu.jpg','ترشی آلبالو')">
                                 <img src="images/products/torshi-albalu.jpg" alt="ترشی آلبالو"
                                      onerror="this.parentElement.classList.add('no-image')">
-                                <div class="image-placeholder">🫙<span class="hint">بدون عکس</span></div>
+                                <div class="image-placeholder"><span class="hint">بدون عکس</span></div>
                             </div>
                             <div class="product-info">
                                 <span class="title">ترشی آلبالو</span>
                                 <span class="desc">ترش‌وشیرین، از آلبالوی تازه</span>
-                                <span class="price">تماس بگیرید · بسته ۵۰۰ گرمی</span>
+                                <span class="price">۵۰۰,۰۰۰ تومان</span>
                             </div>
                         </div>
 
                         <div class="product-card">
-                            <div class="product-image-wrap" onclick="openImage('images/products/torshi-bademjan.jpg','ترشی بادمجان')">
+                            <div class="product-image-wrap" onclick="openImage('images/torshi-makhloot.jpg','ترشی بادمجان')">
                                 <img src="images/products/torshi-bademjan.jpg" alt="ترشی بادمجان"
                                      onerror="this.parentElement.classList.add('no-image')">
-                                <div class="image-placeholder">🫙<span class="hint">بدون عکس</span></div>
+                                <div class="image-placeholder"><span class="hint">بدون عکس</span></div>
                             </div>
                             <div class="product-info">
                                 <span class="title">ترشی بادمجان</span>
                                 <span class="desc">بادمجان کبابی با سیر و ادویه</span>
-                                <span class="price">تماس بگیرید · بسته ۵۰۰ گرمی</span>
+                                <span class="price">ت۵۰۰,۰۰۰ تومان</span>
                             </div>
                         </div>
 
@@ -244,7 +267,7 @@
                             <div class="product-info">
                                 <span class="title">ترشی سیر</span>
                                 <span class="desc">سیر تازه در سرکهٔ طبیعی</span>
-                                <span class="price">تماس بگیرید · بسته ۴۰۰ گرمی</span>
+                                <span class="price">۵۰۰,۰۰۰ تومان</span>
                             </div>
                         </div>
 
@@ -252,12 +275,12 @@
                             <div class="product-image-wrap" onclick="openImage('images/products/torshi-lite.jpg','ترشی لیته')">
                                 <img src="images/products/torshi-lite.jpg" alt="ترشی لیته"
                                      onerror="this.parentElement.classList.add('no-image')">
-                                <div class="image-placeholder">🫙<span class="hint">بدون عکس</span></div>
+                                <div class="image-placeholder"><span class="hint">بدون عکس</span></div>
                             </div>
                             <div class="product-info">
                                 <span class="title">ترشی لیته</span>
                                 <span class="desc">ترشی محلی بادمجان و سبزیجات، تندوتیز</span>
-                                <span class="price">تماس بگیرید · بسته ۵۰۰ گرمی</span>
+                                <span class="price">۵۰۰,۰۰۰ تومان</span>
                             </div>
                         </div>
 
@@ -265,7 +288,7 @@
                 </section>
 
                 <section class="category">
-                    <h2>شیرینی و شربت خانگی</h2>
+                    <h2>لواشک و شربت خانگی</h2>
 
                     <div class="product-grid">
 
@@ -273,12 +296,12 @@
                             <div class="product-image-wrap" onclick="openImage('images/products/lavashak.jpg','لواشک')">
                                 <img src="images/products/lavashak.jpg" alt="لواشک"
                                      onerror="this.parentElement.classList.add('no-image')">
-                                <div class="image-placeholder">🫙<span class="hint">بدون عکس</span></div>
+                                <div class="image-placeholder"><span class="hint">بدون عکس</span></div>
                             </div>
                             <div class="product-info">
                                 <span class="title">لواشک</span>
                                 <span class="desc">دست‌ساز، بدون شکر افزوده</span>
-                                <span class="price">تماس بگیرید · بسته ۲۰۰ گرمی</span>
+                                <span class="price">۵۰۰,۰۰۰ تومان</span>
                             </div>
                         </div>
 
@@ -286,12 +309,12 @@
                             <div class="product-image-wrap" onclick="openImage('images/products/shireh.jpg','شیره')">
                                 <img src="images/products/shireh.jpg" alt="شیره"
                                      onerror="this.parentElement.classList.add('no-image')">
-                                <div class="image-placeholder">🫙<span class="hint">بدون عکس</span></div>
+                                <div class="image-placeholder"><span class="hint">بدون عکس</span></div>
                             </div>
                             <div class="product-info">
                                 <span class="title">شیره</span>
                                 <span class="desc">غلیظ و طبیعی، پخته به‌روش سنتی</span>
-                                <span class="price">تماس بگیرید · بطری یک‌لیتری</span>
+                                <span class="price">۵۰۰,۰۰۰ تومان </span>
                             </div>
                         </div>
 
@@ -301,10 +324,10 @@
             </div>
         </div>
 
-        <div class="page-navigation">
+        <!-- <div class="page-navigation">
             <button class="page-btn active" onclick="window.location.href='products.html'">محصولات خانگی</button>
             <button class="page-btn" onclick="window.location.href='index.html'">منوی رستوران</button>
-        </div>
+        </div> -->
 
         <footer>
             <p>محصولاتی که با دست‌های خودمان، در اقامتگاه دِتَر تهیه می‌شوند.</p>
