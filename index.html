@@ -31,6 +31,8 @@
             --pomegranate-deep: #802a20;
             --saffron: #b6842c;
             --saffron-deep: #93691f;
+            --whatsapp: #3fa348;
+            --whatsapp-deep: #2f8438;
         }
 
         * {
@@ -249,11 +251,44 @@
             padding: 4px 16px;
         }
 
+        .whatsapp-btn {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            align-self: center;
+            width: 100%;
+            padding: 8px 10px;
+            background: var(--whatsapp);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--whatsapp-deep);
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-btn svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 480px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 13px; }
             .product-info .title { font-size: 14.5px; }
             .product-info .desc { font-size: 11px; min-height: 30px; }
             .product-info .price { font-size: 12px; padding: 3px 12px; }
+            .whatsapp-btn { font-size: 12px; padding: 7px 8px; }
         }
 
         /* ---------- footer ---------- */
@@ -268,27 +303,6 @@
             color: var(--ink-soft);
             font-size: 14px;
             line-height: 1.9;
-        }
-
-        .site-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 18px;
-            padding: 11px 28px;
-            background: var(--pomegranate);
-            color: #fff8ec;
-            border-radius: 30px;
-            font-family: 'Vazirmatn', sans-serif;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            transition: background .2s ease, transform .2s ease;
-        }
-
-        .site-link:hover {
-            background: var(--pomegranate-deep);
-            transform: translateY(-1px);
         }
 
         /* ---------- lightbox ---------- */
@@ -327,10 +341,10 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .intro-logo, .hero-present, .product-card, .site-link { animation: none !important; transition: none !important; }
+            .intro-logo, .hero-present, .product-card, .whatsapp-btn { animation: none !important; transition: none !important; }
         }
 
-        a:focus-visible, .product-image-wrap:focus-visible {
+        a:focus-visible, button:focus-visible, .product-image-wrap:focus-visible {
             outline: 2px solid var(--pomegranate);
             outline-offset: 3px;
         }
@@ -367,7 +381,7 @@
 
                 <div class="product-card">
                     <div class="product-image-wrap" onclick="openImage('images/torshi-makhloot.jpg','ترشی مخلوط')">
-                        <img src="images/torshi-makhloot.jpg" alt="ترشی محلوط"
+                        <img src="images/torshi-makhloot.jpg" alt="ترشی مخلوط"
                              onerror="this.parentElement.classList.add('no-image')">
                         <div class="image-placeholder"><span class="jar">🫙</span><span class="hint">بدون عکس</span></div>
                     </div>
@@ -375,6 +389,11 @@
                         <span class="title">ترشی مخلوط</span>
                         <span class="desc">ترش‌وشیرین، از محصولات تازه</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20مخلوط%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -388,6 +407,11 @@
                         <span class="title">ترشی بادمجان</span>
                         <span class="desc">بادمجان کبابی با سیر و ادویه</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20بادمجان%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -401,6 +425,11 @@
                         <span class="title">ترشی سیر</span>
                         <span class="desc">سیر تازه در سرکهٔ طبیعی</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20سیر%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -414,6 +443,11 @@
                         <span class="title">ترشی لیته</span>
                         <span class="desc">ترشی محلی بادمجان و سبزیجات، تندوتیز</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20لیته%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -438,6 +472,11 @@
                         <span class="title">لواشک</span>
                         <span class="desc">دست‌ساز، بدون شکر افزوده</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20لواشک%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -451,6 +490,11 @@
                         <span class="title">شیره</span>
                         <span class="desc">غلیظ و طبیعی، پخته به‌روش سنتی</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
+                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20شیره%20سفارش%20بدم">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                            سفارش از واتس‌اپ
+                        </a>
                     </div>
                 </div>
 
@@ -459,12 +503,6 @@
 
         <footer>
             <p>محصولاتی که با دست‌های خودمان، در اقامتگاه دِتَر تهیه می‌شوند.</p>
-            <a href="https://mhmdmahdieskandari.github.io/alamut-castle/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="site-link">
-               🏠 مشاهده سایت اقامتگاه دِتَر
-            </a>
         </footer>
     </div>
 
