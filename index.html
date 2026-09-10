@@ -251,7 +251,8 @@
             padding: 4px 16px;
         }
 
-        .whatsapp-btn {
+        /* ---------- add to cart button ---------- */
+        .add-to-cart-btn {
             margin-top: 10px;
             display: inline-flex;
             align-items: center;
@@ -260,7 +261,7 @@
             align-self: center;
             width: 100%;
             padding: 8px 10px;
-            background: var(--whatsapp);
+            background: var(--pomegranate);
             color: #fff;
             border: none;
             border-radius: 10px;
@@ -272,15 +273,23 @@
             transition: background .2s ease, transform .2s ease;
         }
 
-        .whatsapp-btn:hover {
-            background: var(--whatsapp-deep);
+        .add-to-cart-btn:hover {
+            background: var(--pomegranate-deep);
             transform: translateY(-1px);
         }
 
-        .whatsapp-btn svg {
+        .add-to-cart-btn svg {
             width: 15px;
             height: 15px;
             flex-shrink: 0;
+        }
+
+        .add-to-cart-btn.added {
+            background: var(--whatsapp);
+        }
+
+        .add-to-cart-btn.added:hover {
+            background: var(--whatsapp-deep);
         }
 
         @media (max-width: 480px) {
@@ -288,7 +297,129 @@
             .product-info .title { font-size: 14.5px; }
             .product-info .desc { font-size: 11px; min-height: 30px; }
             .product-info .price { font-size: 12px; padding: 3px 12px; }
-            .whatsapp-btn { font-size: 12px; padding: 7px 8px; }
+            .add-to-cart-btn { font-size: 12px; padding: 7px 8px; }
+        }
+
+        /* ---------- cart summary / checkout ---------- */
+        .cart-box {
+            margin-top: 50px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 22px 20px;
+            box-shadow: 0 3px 0 var(--line), 0 8px 22px rgba(47, 28, 15, .12);
+        }
+
+        .cart-box h3 {
+            font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+            font-weight: 400;
+            font-size: 22px;
+            color: var(--pomegranate-deep);
+            margin-bottom: 14px;
+        }
+
+        .cart-empty {
+            font-size: 14px;
+            color: var(--ink-soft);
+            padding: 6px 0 2px;
+        }
+
+        .cart-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(182, 132, 44, 0.08);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+        }
+
+        .cart-item .ci-name { font-weight: 600; }
+        .cart-item .ci-price { color: var(--pomegranate-deep); font-size: 13px; }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-controls button {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 16px;
+            line-height: 1;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background .15s ease;
+        }
+
+        .qty-controls button:hover { background: var(--bg-deep); }
+
+        .qty-controls .qty-num {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 700;
+            border-top: 1px dashed var(--line);
+            padding-top: 14px;
+            margin-bottom: 16px;
+        }
+
+        .cart-total .total-value { color: var(--pomegranate-deep); }
+
+        .checkout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px 16px;
+            background: var(--whatsapp);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            font-size: 15.5px;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .checkout-btn:hover:not(:disabled) {
+            background: var(--whatsapp-deep);
+            transform: translateY(-1px);
+        }
+
+        .checkout-btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .checkout-btn svg {
+            width: 19px;
+            height: 19px;
+            flex-shrink: 0;
         }
 
         /* ---------- footer ---------- */
@@ -341,12 +472,35 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .intro-logo, .hero-present, .product-card, .whatsapp-btn { animation: none !important; transition: none !important; }
+            .intro-logo, .hero-present, .product-card, .add-to-cart-btn, .checkout-btn { animation: none !important; transition: none !important; }
         }
 
         a:focus-visible, button:focus-visible, .product-image-wrap:focus-visible {
             outline: 2px solid var(--pomegranate);
             outline-offset: 3px;
+        }
+
+        /* ---------- toast ---------- */
+        .toast {
+            position: fixed;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--ink);
+            color: var(--bg);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 13.5px;
+            font-family: 'Vazirmatn', sans-serif;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease, transform .25s ease;
+            z-index: 11000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
     </style>
 </head>
@@ -379,7 +533,7 @@
 
             <div class="product-grid">
 
-                <div class="product-card">
+                <div class="product-card" data-name="ترشی مخلوط" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/torshi-makhloot.jpg','ترشی مخلوط')">
                         <img src="images/torshi-makhloot.jpg" alt="ترشی مخلوط"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -389,15 +543,14 @@
                         <span class="title">ترشی مخلوط</span>
                         <span class="desc">ترش‌وشیرین، از محصولات تازه</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20مخلوط%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="ترشی بادمجان" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/torshi-bademjan.jpg','ترشی بادمجان')">
                         <img src="images/torshi-bademjan.jpg" alt="ترشی بادمجان"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -407,15 +560,14 @@
                         <span class="title">ترشی بادمجان</span>
                         <span class="desc">بادمجان کبابی با سیر و ادویه</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20بادمجان%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="ترشی سیر" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/torshi-sir.jpg','ترشی سیر')">
                         <img src="images/torshi-sir.jpg" alt="ترشی سیر"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -425,15 +577,14 @@
                         <span class="title">ترشی سیر</span>
                         <span class="desc">سیر تازه در سرکهٔ طبیعی</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20سیر%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="ترشی لیته" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/torshi-lite.jpg','ترشی لیته')">
                         <img src="images/torshi-lite.jpg" alt="ترشی لیته"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -443,11 +594,10 @@
                         <span class="title">ترشی لیته</span>
                         <span class="desc">ترشی محلی بادمجان و سبزیجات، تندوتیز</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20ترشی%20لیته%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
@@ -462,7 +612,7 @@
 
             <div class="product-grid">
 
-                <div class="product-card">
+                <div class="product-card" data-name="لواشک" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/lavashak.jpg','لواشک')">
                         <img src="images/lavashak.jpg" alt="لواشک"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -472,15 +622,14 @@
                         <span class="title">لواشک</span>
                         <span class="desc">دست‌ساز، بدون شکر افزوده</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20لواشک%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="شیره" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images/shireh.jpg','شیره')">
                         <img src="images/shireh.jpg" alt="شیره"
                              onerror="this.parentElement.classList.add('no-image')">
@@ -490,16 +639,30 @@
                         <span class="title">شیره</span>
                         <span class="desc">غلیظ و طبیعی، پخته به‌روش سنتی</span>
                         <span class="price">۵۰۰,۰۰۰ تومان</span>
-                        <a class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
-                           href="https://wa.me/989917929528?text=سلام،%20می‌خواستم%20شیره%20سفارش%20بدم">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                            سفارش از واتس‌اپ
-                        </a>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            افزودن به سبد خرید
+                        </button>
                     </div>
                 </div>
 
             </div>
         </section>
+
+        <!-- ---------- cart / checkout ---------- -->
+        <div class="cart-box" id="cartBox">
+            <h3>🛒 سبد خرید شما</h3>
+            <div class="cart-empty" id="cartEmpty">هنوز محصولی به سبد اضافه نکرده‌اید.</div>
+            <ul class="cart-list" id="cartList"></ul>
+            <div class="cart-total" id="cartTotalRow" style="display:none;">
+                <span>جمع کل:</span>
+                <span class="total-value" id="cartTotalValue">۰ تومان</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                ثبت سفارش با واتس‌اپ
+            </button>
+        </div>
 
         <footer>
             <p>محصولاتی که با دست‌های خودمان، در اقامتگاه دِتَر تهیه می‌شوند.</p>
@@ -511,6 +674,8 @@
         <img id="lightbox-img" alt="">
         <div id="lightbox-title"></div>
     </div>
+
+    <div class="toast" id="toast"></div>
 
     <script>
         Promise.all([
@@ -550,6 +715,131 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeImage();
         });
+
+        /* ---------------- cart ---------------- */
+        const WHATSAPP_NUMBER = '989917929528';
+        const cart = {}; // name -> { price, qty }
+
+        function toPersianDigits(str) {
+            return String(str).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+        }
+
+        function formatPrice(num) {
+            return toPersianDigits(num.toLocaleString('en-US'));
+        }
+
+        function addToCart(btn) {
+            const card = btn.closest('.product-card');
+            const name = card.dataset.name;
+            const price = parseInt(card.dataset.price, 10);
+
+            if (cart[name]) {
+                cart[name].qty += 1;
+            } else {
+                cart[name] = { price: price, qty: 1 };
+            }
+
+            // brief visual feedback on the button
+            btn.classList.add('added');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '✓ به سبد اضافه شد';
+            setTimeout(() => {
+                btn.classList.remove('added');
+                btn.innerHTML = originalHTML;
+            }, 1200);
+
+            showToast('«' + name + '» به سبد خرید اضافه شد');
+            renderCart();
+        }
+
+        function changeQty(name, delta) {
+            if (!cart[name]) return;
+            cart[name].qty += delta;
+            if (cart[name].qty <= 0) {
+                delete cart[name];
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            const listEl = document.getElementById('cartList');
+            const emptyEl = document.getElementById('cartEmpty');
+            const totalRow = document.getElementById('cartTotalRow');
+            const totalValue = document.getElementById('cartTotalValue');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            listEl.innerHTML = '';
+            const names = Object.keys(cart);
+
+            if (names.length === 0) {
+                emptyEl.style.display = 'block';
+                totalRow.style.display = 'none';
+                checkoutBtn.disabled = true;
+                return;
+            }
+
+            emptyEl.style.display = 'none';
+            totalRow.style.display = 'flex';
+            checkoutBtn.disabled = false;
+
+            let total = 0;
+
+            names.forEach(name => {
+                const item = cart[name];
+                total += item.price * item.qty;
+
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML =
+                    '<span class="ci-name">' + name + '</span>' +
+                    '<div class="qty-controls">' +
+                        '<button type="button" aria-label="کم کردن" onclick="changeQty(\'' + name.replace(/'/g, "\\'") + '\', -1)">−</button>' +
+                        '<span class="qty-num">' + toPersianDigits(item.qty) + '</span>' +
+                        '<button type="button" aria-label="اضافه کردن" onclick="changeQty(\'' + name.replace(/'/g, "\\'") + '\', 1)">+</button>' +
+                    '</div>' +
+                    '<span class="ci-price">' + formatPrice(item.price * item.qty) + ' تومان</span>';
+                listEl.appendChild(li);
+            });
+
+            totalValue.textContent = formatPrice(total) + ' تومان';
+        }
+
+        function checkout() {
+            const names = Object.keys(cart);
+            if (names.length === 0) return;
+
+            let lines = [];
+            let total = 0;
+
+            names.forEach(name => {
+                const item = cart[name];
+                const lineTotal = item.price * item.qty;
+                total += lineTotal;
+                lines.push('• ' + name + ' × ' + toPersianDigits(item.qty) + ' = ' + formatPrice(lineTotal) + ' تومان');
+            });
+
+            let msg = 'سلام، از اقامتگاه دِتَر می‌خواهم این سفارش را ثبت کنم:\n\n';
+            msg += lines.join('\n');
+            msg += '\n\n—————————\n';
+            msg += 'جمع کل: ' + formatPrice(total) + ' تومان';
+
+            const encoded = encodeURIComponent(msg);
+            const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encoded;
+
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        let toastTimer = null;
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            toast.textContent = text;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 1800);
+        }
     </script>
 </body>
+
 </html>
