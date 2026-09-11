@@ -1187,14 +1187,9 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        Promise.all([
-            document.fonts.ready,
-            new Promise(resolve => window.addEventListener('load', resolve))
-        ]).then(() => {
-            setTimeout(() => {
-                document.querySelector('.intro').classList.add('hide');
-            }, 1200);
-        });
+        setTimeout(() => {
+            document.querySelector('.intro').classList.add('hide');
+        }, 5000);
 
         function openImage(src, title) {
             const lightbox = document.getElementById('lightbox');
