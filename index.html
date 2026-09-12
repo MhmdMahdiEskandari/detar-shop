@@ -33,6 +33,10 @@
             --saffron-deep: #93691f;
             --whatsapp: #3fa348;
             --whatsapp-deep: #2f8438;
+            --telegram: #229ED9;
+            --telegram-deep: #1a7fb0;
+            --sms: #d97706;
+            --sms-deep: #b45f04;
         }
 
         * {
@@ -106,13 +110,13 @@
             align-items: flex-end;
             justify-content: center;
         }
-        
+
         .shop-hero-bg {
             position: absolute;
             inset: 0;
             z-index: 0;
         }
-        
+
         .shop-hero-bg img {
             width: 100%;
             height: 100%;
@@ -120,8 +124,7 @@
             object-position: center 30%;
             display: block;
         }
-        
-        /* dark gradient overlay so text stays readable */
+
         .shop-hero-bg::after {
             content: '';
             position: absolute;
@@ -134,7 +137,7 @@
                 rgba(20, 12, 6, 0.35) 100%
             );
         }
-        
+
         .shop-hero-content {
             position: relative;
             z-index: 1;
@@ -142,7 +145,7 @@
             text-align: center;
             max-width: 640px;
         }
-        
+
         .shop-hero .kicker {
             font-size: 14px;
             color: #f2e4bd;
@@ -150,7 +153,7 @@
             margin-bottom: 10px;
             letter-spacing: .3px;
         }
-        
+
         .shop-hero h1 {
             font-family: 'Lalezar', 'Vazirmatn', sans-serif;
             font-size: clamp(30px, 5.5vw, 48px);
@@ -159,7 +162,7 @@
             font-weight: 400;
             text-shadow: 0 3px 18px rgba(0, 0, 0, .55);
         }
-        
+
         .shop-hero p {
             max-width: 520px;
             margin: 16px auto 0;
@@ -169,12 +172,11 @@
             opacity: .95;
             text-shadow: 0 2px 10px rgba(0, 0, 0, .5);
         }
-        
-        /* remove the old divider since it doesn't fit on a photo */
+
         .shop-hero .boteh-divider {
             display: none;
         }
-        
+
         @media (max-width: 600px) {
             .shop-hero {
                 min-height: 360px;
@@ -453,38 +455,61 @@
 
         .cart-total .total-value { color: var(--pomegranate-deep); }
 
+        /* ---------- checkout channel buttons ---------- */
+        .checkout-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
         .checkout-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 7px;
             width: 100%;
-            padding: 13px 16px;
-            background: var(--whatsapp);
+            padding: 13px 10px;
             color: #fff;
             border: none;
             border-radius: 12px;
             font-family: 'Vazirmatn', sans-serif;
             font-weight: 700;
-            font-size: 15.5px;
+            font-size: 14px;
             cursor: pointer;
             transition: background .2s ease, transform .2s ease;
+            white-space: nowrap;
         }
 
-        .checkout-btn:hover:not(:disabled) {
-            background: var(--whatsapp-deep);
-            transform: translateY(-1px);
-        }
+        .checkout-btn:hover:not(:disabled) { transform: translateY(-1px); }
 
         .checkout-btn:disabled {
-            opacity: .5;
+            opacity: .45;
             cursor: not-allowed;
         }
 
         .checkout-btn svg {
-            width: 19px;
-            height: 19px;
+            width: 17px;
+            height: 17px;
             flex-shrink: 0;
+        }
+
+        .checkout-btn.whatsapp { background: var(--whatsapp); }
+        .checkout-btn.whatsapp:hover:not(:disabled) { background: var(--whatsapp-deep); }
+
+        .checkout-btn.telegram { background: var(--telegram); }
+        .checkout-btn.telegram:hover:not(:disabled) { background: var(--telegram-deep); }
+
+        .checkout-btn.sms { background: var(--sms); }
+        .checkout-btn.sms:hover:not(:disabled) { background: var(--sms-deep); }
+
+        @media (max-width: 520px) {
+            .checkout-actions {
+                grid-template-columns: 1fr;
+            }
+            .checkout-btn {
+                font-size: 14.5px;
+                padding: 12px;
+            }
         }
 
         /* ---------- footer ---------- */
@@ -1004,7 +1029,6 @@
 
             <div class="product-grid">
 
-                
                 <div class="product-card" data-name="برگ نعنا" data-price="250000">
                     <div class="product-image-wrap" onclick="openImage('images2/nana-dorosht.JPG','برگ نعنا')">
                         <img src="images2/nana-dorosht.JPG" alt="برگ نعنا"
@@ -1022,7 +1046,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="نعنا (آسیاب شده)" data-price="350000">
                     <div class="product-image-wrap" onclick="openImage('images2/nana.JPG','نعنا (آسیاب شده)')">
                         <img src="images2/nana.JPG" alt="نعنا (آسیاب شده)"
@@ -1040,7 +1063,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="گل گاو زبان" data-price="300000">
                     <div class="product-image-wrap" onclick="openImage('images2/gol-gav.JPG','گل گاو زبان')">
                         <img src="images2/gol-gav.JPG" alt="گل گاو زبان"
@@ -1069,7 +1091,6 @@
 
             <div class="product-grid">
 
-                
                 <div class="product-card" data-name="شربت گیلاس" data-price="350000">
                     <div class="product-image-wrap" onclick="openImage('images2/sharbat-gilas.JPG','شربت گیلاس')">
                         <img src="images2/sharbat-gilas.JPG" alt="شربت گیلاس"
@@ -1087,7 +1108,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="شربت شاتوت" data-price="600000">
                     <div class="product-image-wrap" onclick="openImage('images2/sharbat-shatout.JPG','شربت شاتوت')">
                         <img src="images2/sharbat-shatout.JPG" alt="شربت شاتوت"
@@ -1116,8 +1136,6 @@
 
             <div class="product-grid">
 
-                
-                
                 <div class="product-card" data-name="مربای گیلاس صورتی" data-price="500000">
                     <div class="product-image-wrap" onclick="openImage('images2/moraba-gilas-s.JPG','مربای گیلاس صورتی')">
                         <img src="images2/moraba-gilas-s.JPG" alt="مربای گیلاس صورتی"
@@ -1135,7 +1153,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="مربای شاتوت" data-price="400000">
                     <div class="product-image-wrap" onclick="openImage('images2/moraba-shatout.JPG','مربای شاتوت')">
                         <img src="images2/moraba-shatout.JPG" alt="مربای شاتوت"
@@ -1153,7 +1170,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="مارمالاد گیلاس" data-price="400000">
                     <div class="product-image-wrap" onclick="openImage('images2/marmalad-gilas.JPG','مارمالاد گیلاس')">
                         <img src="images2/marmalad-gilas.JPG" alt="مارمالاد گیلاس"
@@ -1182,8 +1198,6 @@
 
             <div class="product-grid">
 
-                
-                
                 <div class="product-card" data-name="آبغوره" data-price="250000">
                     <div class="product-image-wrap" onclick="openImage('images2/abqoure.JPG','آبغوره')">
                         <img src="images2/abqoure.JPG" alt="آبغوره"
@@ -1201,7 +1215,6 @@
                     </div>
                 </div>
 
-                
                 <div class="product-card" data-name="رب آلو" data-price="800000">
                     <div class="product-image-wrap" onclick="openImage('images2/rob-alou.JPG','رب آلو')">
                         <img src="images2/rob-alou.JPG" alt="رب آلو"
@@ -1231,10 +1244,20 @@
                 <span>جمع کل:</span>
                 <span class="total-value" id="cartTotalValue">۰ تومان</span>
             </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
-                ثبت سفارش با واتس‌اپ
-            </button>
+            <div class="checkout-actions">
+                <button class="checkout-btn whatsapp" id="checkoutWhatsapp" onclick="checkout('whatsapp')" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8.3-8 8.3z"/></svg>
+                    واتس‌اپ
+                </button>
+                <button class="checkout-btn telegram" id="checkoutTelegram" onclick="checkout('telegram')" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                    تلگرام
+                </button>
+                <button class="checkout-btn sms" id="checkoutSms" onclick="checkout('sms')" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    پیامک
+                </button>
+            </div>
         </div>
 
         <footer>
@@ -1286,6 +1309,9 @@
 
         /* ---------------- cart ---------------- */
         const WHATSAPP_NUMBER = '989917929528';
+        const TELEGRAM_USERNAME = 'boomgardi_detar';   // ← بدون @
+        const SMS_NUMBER = '+989917929528';         // ← با کد کشور برای پیامک بین‌المللی
+
         const cart = {}; // name -> { price, qty }
 
         function toPersianDigits(str) {
@@ -1307,7 +1333,6 @@
                 cart[name] = { price: price, qty: 1 };
             }
 
-            // brief visual feedback on the button
             btn.classList.add('added');
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '✓ به سبد اضافه شد';
@@ -1334,7 +1359,9 @@
             const emptyEl = document.getElementById('cartEmpty');
             const totalRow = document.getElementById('cartTotalRow');
             const totalValue = document.getElementById('cartTotalValue');
-            const checkoutBtn = document.getElementById('checkoutBtn');
+            const btnWhatsapp = document.getElementById('checkoutWhatsapp');
+            const btnTelegram = document.getElementById('checkoutTelegram');
+            const btnSms = document.getElementById('checkoutSms');
 
             listEl.innerHTML = '';
             const names = Object.keys(cart);
@@ -1342,13 +1369,17 @@
             if (names.length === 0) {
                 emptyEl.style.display = 'block';
                 totalRow.style.display = 'none';
-                checkoutBtn.disabled = true;
+                btnWhatsapp.disabled = true;
+                btnTelegram.disabled = true;
+                btnSms.disabled = true;
                 return;
             }
 
             emptyEl.style.display = 'none';
             totalRow.style.display = 'flex';
-            checkoutBtn.disabled = false;
+            btnWhatsapp.disabled = false;
+            btnTelegram.disabled = false;
+            btnSms.disabled = false;
 
             let total = 0;
 
@@ -1372,11 +1403,12 @@
             totalValue.textContent = formatPrice(total) + ' تومان';
         }
 
-        function checkout() {
+        /* build the plain-text order message (used by all channels) */
+        function buildOrderMessage() {
             const names = Object.keys(cart);
-            if (names.length === 0) return;
+            if (names.length === 0) return null;
 
-            let lines = [];
+            const lines = [];
             let total = 0;
 
             names.forEach(name => {
@@ -1390,11 +1422,37 @@
             msg += lines.join('\n');
             msg += '\n\n—————————\n';
             msg += 'جمع کل: ' + formatPrice(total) + ' تومان';
+            return msg;
+        }
+
+        function checkout(channel) {
+            const msg = buildOrderMessage();
+            if (!msg) return;
 
             const encoded = encodeURIComponent(msg);
-            const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encoded;
 
-            window.open(url, '_blank', 'noopener,noreferrer');
+            if (channel === 'whatsapp') {
+                // WhatsApp: https://wa.me/<number>?text=<encoded>
+                const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encoded;
+                window.open(url, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            if (channel === 'telegram') {
+                // Telegram: https://t.me/<username>?text=<encoded>  (works on mobile & desktop)
+                const url = 'https://t.me/' + TELEGRAM_USERNAME + '?text=' + encoded;
+                window.open(url, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            if (channel === 'sms') {
+                // SMS: sms:<number>?&body=<encoded>
+                // The '?&body=' form works on both iOS and Android.
+                const url = 'sms:' + SMS_NUMBER + '?&body=' + encoded;
+                // Use location.href so the SMS app opens directly on mobile
+                window.location.href = url;
+                return;
+            }
         }
 
         let toastTimer = null;
